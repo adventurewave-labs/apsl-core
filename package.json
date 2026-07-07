@@ -1,0 +1,35 @@
+{
+  "name": "apsl-core",
+  "version": "0.3.0",
+  "description": "Ten agent skills with canonical verb names and declared I/O contracts, plus apsl-lint. A skill pack and a convention — not a language.",
+  "license": "MIT",
+  "bin": {
+    "apsl-lint": "./lint/apsl-lint.js"
+  },
+  "files": [
+    "skills/",
+    "lint/",
+    "schema/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "lint": "node lint/apsl-lint.js check ./skills",
+    "test": "node test/run-tests.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "agent-skills",
+    "skill-pack",
+    "claude-code",
+    "gemini-cli",
+    "codex-cli",
+    "apsl"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adventurewave-labs/apsl-core"
+  }
+}
