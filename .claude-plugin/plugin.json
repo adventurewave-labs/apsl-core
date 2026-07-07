@@ -1,0 +1,10 @@
+{
+  "name": "apsl-core",
+  "version": "0.3.0",
+  "description": "Ten agent skills with canonical verb names and declared I/O contracts. A skill pack and a convention — not a language.",
+  "author": {
+    "name": "Marcus Patman"
+  },
+  "license": "MIT",
+  "skills": "./skills"
+}
