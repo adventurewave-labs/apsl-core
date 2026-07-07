@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # The pack must pass its own linter — the convention lints itself.
+      - name: Self-lint skill pack
+        run: node lint/apsl-lint.js check ./skills
+      - name: Fixture tests
+        run: node test/run-tests.js
