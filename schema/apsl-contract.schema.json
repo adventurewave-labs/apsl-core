@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/apsl/apsl-core/main/schema/apsl-contract.schema.json",
+  "title": "APSL Contract Block",
+  "description": "Advisory I/O contract for an agent skill. Declared in the `apsl` key of SKILL.md YAML frontmatter. Contracts are documentation with tooling support — never runtime enforcement.",
+  "type": "object",
+  "required": ["verb", "inputs", "outputs", "contract-version"],
+  "additionalProperties": false,
+  "properties": {
+    "verb": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Canonical verb name. Must match the skill's `name` field and its directory name."
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target": { "$ref": "#/$defs/field" },
+        "context": { "$ref": "#/$defs/field" },
+        "flags": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/field" }
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "required": ["shape"],
+      "additionalProperties": false,
+      "properties": {
+        "shape": { "$ref": "#/$defs/shape" },
+        "also": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/shape" },
+          "description": "Secondary output shapes, if the skill produces more than one."
+        },
+        "pipeable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether this skill's output is useful as context for a subsequent skill."
+        }
+      }
+    },
+    "consumes": {
+      "type": "string",
+      "pattern": "^(none|(report|diff|text|json|status|artifact)(\\|(report|diff|text|json|status|artifact))*)$",
+      "default": "none",
+      "description": "Shapes this skill usefully accepts as prior context, pipe-separated, or 'none'."
+    },
+    "contract-version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Contract schema version. Currently 1."
+    }
+  },
+  "$defs": {
+    "shape": {
+      "type": "string",
+      "enum": ["report", "diff", "text", "json", "status", "artifact"],
+      "description": "One of the six closed output shapes."
+    },
+    "field": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "^(path|string|boolean|none|enum\\[[a-z0-9-]+(,[a-z0-9-]+)*\\])$",
+          "description": "Field type: path | string | boolean | none | enum[a,b,c]."
+        },
+        "required": { "type": "boolean", "default": false },
+        "default": { "type": ["string", "boolean", "number"] }
+      }
+    }
+  }
+}
