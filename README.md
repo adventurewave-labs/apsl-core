@@ -34,7 +34,7 @@ even though agent behavior itself remains probabilistic.
 
 ```bash
 # skills.sh (any Agent Skills-compatible agent)
-npx skills add apsl-core
+npx skills add adventurewave-labs/apsl-core
 
 # or manually: copy skills/* into your agent's skill directory
 #   Claude Code: .claude/skills/     Gemini CLI: .gemini/skills/
