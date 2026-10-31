@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.svg" alt="apsl-core — animated banner" width="100%"></p>
+
 # apsl-core
 
 **Ten agent skills with canonical verb names and declared I/O contracts.**
