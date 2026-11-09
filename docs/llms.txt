@@ -1,0 +1,10 @@
+# apsl-core
+
+> Ten agent skills with canonical verb names and declared I/O contracts, plus apsl-lint. A skill pack and a convention - not a language.
+
+apsl-core is maintained by Adventure Wave Labs (The lab for agentic developer tooling).
+
+## Links
+
+- [Landing page](https://adventurewave-labs.github.io/apsl-core/): overview, features, FAQ
+- [Source code](https://github.com/adventurewave-labs/apsl-core): README, issues, releases
